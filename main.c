@@ -3,7 +3,7 @@
 
 int main() {
     int choix;
-    char word[50];
+    char word[50], newtitle[50];
 
     while(1) {
         welcome();
@@ -20,7 +20,9 @@ int main() {
             case 3:
                 printf("Entree la Tache Titre: ");
                 scanf("%s", word);
-                modifieTache(word);
+                printf("Entree le nouveau titre: ");
+                scanf("%s", newtitle);
+                modifieTache(word, newtitle);
                 clearString(word);
                 break;
             case 4:
@@ -28,6 +30,7 @@ int main() {
                 break;
             case 5:
                 break;
+            case 0:
                 printf("Exit Program....\n");
                 exit(0);
             default:

@@ -3,9 +3,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX 1024
-#define FMEMO "Failed to Allocate Memory"
+#define CHECK_ALLOC(ptr) if(!(ptr)) { perror ("Memory Allocation Failed"); return;}
 #define tfile "tachefile.txt"
 #define ufile "userfile.txt"
 
@@ -31,7 +32,7 @@ typedef struct date {
 
 void ajouteTache();
 void afficherTaches();
-void modifieTache(char name[]);
+void modifieTache(char name[], char new[]);
 /*void ajoutesTaches();
 void deleteTache();*/
 
