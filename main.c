@@ -18,14 +18,16 @@ int main() {
                 afficherTaches();
                 break;
             case 3:
-                // modifier une tache
+                printf("Entree la Tache Titre: ");
+                scanf("%s", word);
+                modifieTache(word);
+                clearString(word);
                 break;
             case 4:
-                // delete une tache
+                printf("This the Word String: %s\n", word);
                 break;
             case 5:
                 break;
-            case 0:
                 printf("Exit Program....\n");
                 exit(0);
             default:

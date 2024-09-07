@@ -29,14 +29,18 @@ typedef struct date {
     char year;
 } Date_t;
 
-void welcome();
 void ajouteTache();
 void afficherTaches();
+void modifieTache(char name[]);
 /*void ajoutesTaches();
-void modifieTache();
 void deleteTache();*/
 
 // fileOperation
 FILE *fileops(char filename[], char mode[]);
+
+
+//auxillary function
+void welcome();
+char *clearString(char *s);
 
 #endif

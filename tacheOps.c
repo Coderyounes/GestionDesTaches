@@ -18,6 +18,7 @@ void ajouteTache() {
         sscanf(buffer, "%s %s %s %s", newTache->title, newTache->description, newTache->status, newTache->deadline);
         fprintf(fp, "%s %s %s %s\n", newTache->title, newTache->description, newTache->status, newTache->deadline);
         }
+    fclose(fp);
     free(newTache);
 }
 
@@ -37,6 +38,11 @@ void afficherTaches() {
         sscanf(buffer, "%s %s %s %s", T->title, T->description, T->status, T->deadline);
         printf("%s %s %s %s\n", T->title, T->description, T->status, T->deadline);
     }
-
+    fclose(fp);
     free(T);
+}
+
+// Update: Modification by ID
+void modifieTache(char name[]) {
+
 }

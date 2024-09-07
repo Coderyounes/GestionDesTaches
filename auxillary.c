@@ -9,3 +9,8 @@ void welcome() {
     printf("3: modifier une Taches\n");
     printf("4: supprimer une Taches\n");
 }
+
+char *clearString(char *s) {
+    s[0] = '\0';
+    return s;
+}
