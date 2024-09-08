@@ -86,7 +86,7 @@ void modifieTache(char titre[], char newDescription[], char newStatus[], char ne
 
 // Update: Delete function should delete by ID
 
-void deleteTache(char titre[])
+void deleteTache(int id)
 {
     char buffer[MAX];
     Tache_t *T;
@@ -100,10 +100,14 @@ void deleteTache(char titre[])
 
     while (fgets(buffer, sizeof(buffer), fp) != NULL)
     {
-        sscanf(buffer, "%s %s %s %s", T->title, T->description, T->status, T->deadline);
-        if (strcmp(T->title, titre) != 0)
+        sscanf(buffer, "%d %s %s %s %s", &T->id, T->title, T->description, T->status, T->deadline);
+        if (T->id > id)
         {
-            fprintf(tfp, "%s %s %s %s\n", T->title, T->description, T->status, T->deadline);
+            fprintf(tfp, "%d %s %s %s %s\n", T->id - 1, T->title, T->description, T->status, T->deadline);
+        }
+        else if (T->id != id)
+        {
+            fprintf(tfp, "%d %s %s %s %s\n", T->id, T->title, T->description, T->status, T->deadline);
         }
     }
 
