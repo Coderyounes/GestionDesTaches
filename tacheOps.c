@@ -40,21 +40,28 @@ void afficherTaches() {
 void modifieTache(char titre[], char new[]) {
     char buffer[MAX];
     Tache_t *T;
-    FILE *fp;
-    // Utiliser Temporaire File Pour la modification
+    FILE *fp, *tfp;
+
     T = malloc(sizeof(Tache_t));
     CHECK_ALLOC(T);
-    // Overt 2 file pointeur une pour lire & l'autre pour Ecriture
-    fp = fileops(tfile, "a");
+
+    fp = fileops(tfile, "r");
+    tfp = fileops("temp.txt", "a");
     while(fgets(buffer, sizeof(buffer), fp) != NULL) {
         sscanf(buffer, "%s %s %s %s", T->title, T->description, T->status, T->deadline);
-        if (strcmp(T->title, titre) == 0) {
+        if(strcmp(T->title, titre) == 0) {
             strcpy(T->title, new);
         }
-        fprintf(fp, "%s %s %s %s", T->title, T->description, T->status, T->deadline);
+        fprintf(tfp, "%s %s %s %s\n", T->title, T->description, T->status, T->deadline);
     }
+
     free(T);
+
     fclose(fp);
+    fclose(tfp);
+
+    remove(tfile);
+    rename("temp.txt", tfile);
 }
 
 
