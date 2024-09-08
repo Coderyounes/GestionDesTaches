@@ -46,7 +46,11 @@ void deleteTache(int id);
 // recherche functions
 void searchOps();
 void searchBytitre(char name[]);
+void searchByid(int id);
 /*void searchById(int id);*/
+
+// stats Operations
+int countTache();
 
 // sortOps
 

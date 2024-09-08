@@ -38,6 +38,9 @@ int main()
         case 5:
             searchOps();
             break;
+        case 6:
+            printf("Total of Tasks are : %d Task\n", countTache());
+            break;
         case 0:
             printf("Exit Program....\n");
             exit(0);

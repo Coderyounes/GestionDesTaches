@@ -10,6 +10,7 @@ void welcome()
     printf("3: modifier une Taches\n");
     printf("4: supprimer une Taches\n");
     printf("5: recherche\n");
+    printf("6: count total Tasks\n");
 }
 
 char *clearString(char *s)
@@ -24,7 +25,6 @@ int countlines(FILE *fp)
     char buffer[MAX];
     while (fgets(buffer, sizeof(buffer), fp) != NULL)
     {
-        printf("%d\n", lines);
         lines++;
     }
     rewind(fp);
