@@ -18,7 +18,6 @@ void bubbleSort(Tache_t taches[], int count)
     }
 }
 
-// fix the printing Issue in the Sort
 void sortByAlpha(FILE *fp)
 {
     char buffer[MAX];
@@ -32,6 +31,7 @@ void sortByAlpha(FILE *fp)
                taches[i].description,
                taches[i].status,
                taches[i].deadline);
+        i++;
     }
 
     bubbleSort(taches, lines);
