@@ -41,6 +41,11 @@ void deleteTache(char name[]);
 /*void ajoutesTaches();
 */
 
+// recherche functions
+void searchOps();
+void searchBytitre(char name[]);
+/*void searchById(int id);*/
+
 // fileOperation
 FILE *fileops(char filename[], char mode[]);
 

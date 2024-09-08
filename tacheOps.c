@@ -1,6 +1,5 @@
 #include "main.h"
 
-// Update: Tache status doit etre update par programe pas par utilisateur
 void ajouteTache() {
     char buffer[MAX];
     Tache_t *T;

@@ -8,6 +8,7 @@ void welcome() {
     printf("2: Lister les Taches\n");
     printf("3: modifier une Taches\n");
     printf("4: supprimer une Taches\n");
+    printf("5: recherche\n");
 }
 
 char *clearString(char *s) {

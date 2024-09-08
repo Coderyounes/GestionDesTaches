@@ -35,6 +35,7 @@ int main() {
                 clearString(word);
                 break;
             case 5:
+                searchOps();
                 break;
             case 0:
                 printf("Exit Program....\n");
