@@ -1,6 +1,7 @@
 #include "main.h"
 
-void welcome() {
+void welcome()
+{
     printf("\n\n\tBonjour\n");
     printf("***********************************");
     printf("\n0: Exit\n");
@@ -11,7 +12,21 @@ void welcome() {
     printf("5: recherche\n");
 }
 
-char *clearString(char *s) {
+char *clearString(char *s)
+{
     s[0] = '\0';
     return s;
+}
+
+int countlines(FILE *fp)
+{
+    int lines = 0;
+    char buffer[MAX];
+    while (fgets(buffer, sizeof(buffer), fp) != NULL)
+    {
+        printf("%d\n", lines);
+        lines++;
+    }
+    rewind(fp);
+    return lines;
 }

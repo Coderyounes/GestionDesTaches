@@ -1,26 +1,34 @@
 #include "main.h"
 
-void ajouteTache() {
+void ajouteTache()
+{
+    int count;
     char buffer[MAX];
     Tache_t *T;
-    FILE *fp;
+    FILE *fp, *tfp;
 
     T = malloc(sizeof(Tache_t));
     CHECK_ALLOC(T);
 
     fp = fileops(tfile, "a");
+    tfp = fileops(tfile, "r");
+    count = countlines(tfp);
     getchar();
     printf("Entre titel, description, deadline: ");
-    if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
+    if (fgets(buffer, sizeof(buffer), stdin) != NULL)
+    {
+        T->id = count + 1;
         sscanf(buffer, "%s %s %s", T->title, T->description, T->deadline);
         strcpy(T->status, TODO);
-        fprintf(fp, "%s %s %s %s\n", T->title, T->description, T->status, T->deadline);
-        }
+        fprintf(fp, "%d %s %s %s %s\n", T->id, T->title, T->description, T->status, T->deadline);
+    }
     fclose(fp);
+    fclose(tfp);
     free(T);
 }
 
-void afficherTaches() {
+void afficherTaches()
+{
     char buffer[MAX];
     Tache_t *T;
     FILE *fp;
@@ -29,16 +37,23 @@ void afficherTaches() {
     CHECK_ALLOC(T);
 
     fp = fileops(tfile, "r");
-    while(fgets(buffer, sizeof(buffer), fp)) {
-        sscanf(buffer, "%s %s %s %s", T->title, T->description, T->status, T->deadline);
-        printf("\n%s %s %s %s", T->title, T->description, T->status, T->deadline);
+    if (fp < 0)
+    {
+        perror("File Error");
+        return;
+    }
+    while (fgets(buffer, sizeof(buffer), fp))
+    {
+        sscanf(buffer, "%d %s %s %s %s", &T->id, T->title, T->description, T->status, T->deadline);
+        printf("%d %s %s %s %s\n", T->id, T->title, T->description, T->status, T->deadline);
     }
     fclose(fp);
     free(T);
 }
 
 // Update: Modification by ID
-void modifieTache(char titre[], char newDescription[], char newStatus[], char newDeadline[]) {
+void modifieTache(char titre[], char newDescription[], char newStatus[], char newDeadline[])
+{
     char buffer[MAX];
     Tache_t *T;
     FILE *fp, *tfp;
@@ -48,9 +63,11 @@ void modifieTache(char titre[], char newDescription[], char newStatus[], char ne
 
     fp = fileops(tfile, "r");
     tfp = fileops("temp.txt", "a");
-    while(fgets(buffer, sizeof(buffer), fp) != NULL) {
+    while (fgets(buffer, sizeof(buffer), fp) != NULL)
+    {
         sscanf(buffer, "%s %s %s %s", T->title, T->description, T->status, T->deadline);
-        if(strcmp(T->title, titre) == 0) {
+        if (strcmp(T->title, titre) == 0)
+        {
             strcpy(T->description, newDescription);
             strcpy(T->status, newStatus);
             strcpy(T->deadline, newDeadline);
@@ -67,10 +84,10 @@ void modifieTache(char titre[], char newDescription[], char newStatus[], char ne
     rename("temp.txt", tfile);
 }
 
+// Update: Delete function should delete by ID
 
-// Update: Delete function should delete by ID 
-
-void deleteTache(char titre[]) {
+void deleteTache(char titre[])
+{
     char buffer[MAX];
     Tache_t *T;
     FILE *fp, *tfp;
@@ -81,11 +98,13 @@ void deleteTache(char titre[]) {
     fp = fileops(tfile, "r");
     tfp = fileops("temp.txt", "a");
 
-    while(fgets(buffer, sizeof(buffer), fp) != NULL) {
+    while (fgets(buffer, sizeof(buffer), fp) != NULL)
+    {
         sscanf(buffer, "%s %s %s %s", T->title, T->description, T->status, T->deadline);
-        if(strcmp(T->title, titre) != 0) {
+        if (strcmp(T->title, titre) != 0)
+        {
             fprintf(tfp, "%s %s %s %s\n", T->title, T->description, T->status, T->deadline);
-        } 
+        }
     }
 
     fclose(fp);
