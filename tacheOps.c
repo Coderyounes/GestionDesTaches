@@ -1,22 +1,24 @@
 #include "main.h"
 
+// Update: Tache status doit etre update par programe pas par utilisateur
 void ajouteTache() {
     char buffer[MAX];
-    Tache_t *newTache;
+    Tache_t *T;
     FILE *fp;
 
-    newTache = malloc(sizeof(Tache_t));
-    CHECK_ALLOC(newTache);
+    T = malloc(sizeof(Tache_t));
+    CHECK_ALLOC(T);
 
     fp = fileops(tfile, "a");
     getchar();
-    printf("Entre titel, description, status, deadline: ");
+    printf("Entre titel, description, deadline: ");
     if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
-        sscanf(buffer, "%s %s %s %s", newTache->title, newTache->description, newTache->status, newTache->deadline);
-        fprintf(fp, "%s %s %s %s\n", newTache->title, newTache->description, newTache->status, newTache->deadline);
+        sscanf(buffer, "%s %s %s", T->title, T->description, T->deadline);
+        strcpy(T->status, TODO);
+        fprintf(fp, "%s %s %s %s\n", T->title, T->description, T->status, T->deadline);
         }
     fclose(fp);
-    free(newTache);
+    free(T);
 }
 
 void afficherTaches() {

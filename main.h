@@ -10,6 +10,10 @@
 #define tfile "tachefile.txt"
 #define ufile "userfile.txt"
 
+#define TODO "à_réaliser"
+#define INPROGRESS "en_cours_de_réalisation"
+#define DONE "finalisée"
+
 typedef struct tache {
     /*int id;*/
     char status[MAX];
