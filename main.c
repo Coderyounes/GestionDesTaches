@@ -41,6 +41,12 @@ int main()
         case 6:
             printf("Total of Tasks are : %d Task\n", countTache());
             break;
+        case 7:
+            printf("Select the Sort Mode\n1: by alphabet\n2: By deadline\nn");
+            printf("enter your choice: ");
+            scanf("%d", &choix);
+            sortOps(choix);
+            break;
         case 0:
             printf("Exit Program....\n");
             exit(0);

@@ -53,6 +53,8 @@ void searchByid(int id);
 int countTache();
 
 // sortOps
+void sortOps(int choice);
+void sortByAlpha();
 
 // fileOperation
 FILE *fileops(char filename[], char mode[]);

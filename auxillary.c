@@ -11,6 +11,7 @@ void welcome()
     printf("4: supprimer une Taches\n");
     printf("5: recherche\n");
     printf("6: count total Tasks\n");
+    printf("7: show tache in sort\n");
 }
 
 char *clearString(char *s)
