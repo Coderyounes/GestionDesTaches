@@ -32,7 +32,7 @@ typedef struct date {
 
 void ajouteTache();
 void afficherTaches();
-void modifieTache(char name[], char new[]);
+void modifieTache(char name[], char newDescription[], char newStatus[], char newDeadline[]);
 void deleteTache(char name[]);
 /*void ajoutesTaches();
 */

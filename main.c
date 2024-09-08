@@ -3,8 +3,7 @@
 
 int main() {
     int choix;
-    char word[50], newtitle[50];
-
+    char word[50], newdescription[50], newStatus[50], newDeadline[50];
     while(1) {
         welcome();
         printf("Entree votre choix: ");
@@ -20,9 +19,13 @@ int main() {
             case 3:
                 printf("Entree la Tache Titre: ");
                 scanf("%s", word);
-                printf("Entree le nouveau titre: ");
-                scanf("%s", newtitle);
-                modifieTache(word, newtitle);
+                printf("Entree le nouveau description: ");
+                scanf("%s", newdescription);
+                printf("Entree la nouveau stats: ");
+                scanf("%s", newStatus);
+                printf("Enter le nouveau deadline: ");
+                scanf("%s", newDeadline);
+                modifieTache(word, newdescription, newStatus, newDeadline);
                 clearString(word);
                 break;
             case 4:

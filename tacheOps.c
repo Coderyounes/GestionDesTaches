@@ -37,7 +37,7 @@ void afficherTaches() {
 }
 
 // Update: Modification by ID
-void modifieTache(char titre[], char new[]) {
+void modifieTache(char titre[], char newDescription[], char newStatus[], char newDeadline[]) {
     char buffer[MAX];
     Tache_t *T;
     FILE *fp, *tfp;
@@ -50,7 +50,9 @@ void modifieTache(char titre[], char new[]) {
     while(fgets(buffer, sizeof(buffer), fp) != NULL) {
         sscanf(buffer, "%s %s %s %s", T->title, T->description, T->status, T->deadline);
         if(strcmp(T->title, titre) == 0) {
-            strcpy(T->title, new);
+            strcpy(T->description, newDescription);
+            strcpy(T->status, newStatus);
+            strcpy(T->deadline, newDeadline);
         }
         fprintf(tfp, "%s %s %s %s\n", T->title, T->description, T->status, T->deadline);
     }
