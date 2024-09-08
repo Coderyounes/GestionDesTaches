@@ -22,12 +22,6 @@ typedef struct tache {
     char deadline[MAX];
 } Tache_t;
 
-typedef struct user {
-    char nom[MAX];
-    char prenom[MAX];
-    char email[MAX];
-} User_t;
-
 typedef struct date {
     char jour;
     char month;

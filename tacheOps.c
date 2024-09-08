@@ -31,7 +31,7 @@ void afficherTaches() {
     fp = fileops(tfile, "r");
     while(fgets(buffer, sizeof(buffer), fp)) {
         sscanf(buffer, "%s %s %s %s", T->title, T->description, T->status, T->deadline);
-        printf("%s %s %s %s\n", T->title, T->description, T->status, T->deadline);
+        printf("\n%s %s %s %s", T->title, T->description, T->status, T->deadline);
     }
     fclose(fp);
     free(T);

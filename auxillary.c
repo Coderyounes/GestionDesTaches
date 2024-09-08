@@ -1,7 +1,7 @@
 #include "main.h"
 
 void welcome() {
-    printf("\n\tBonjour\n");
+    printf("\n\n\tBonjour\n");
     printf("***********************************");
     printf("\n0: Exit\n");
     printf("1: Ajouter Une Tache\n");
