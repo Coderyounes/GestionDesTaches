@@ -1,10 +1,5 @@
 #include "main.h"
 
-// Une simple switch pour mieux manager les choix d'utilisateur
-// Cree 2 recherche function  une par titre l'autre par identifiant 
-// Implement Binary Search Alghorithme
-/*void searchById(int id);*/
-
 void searchBytitre(char name[]) {
     char buffer[MAX];
     Tache_t *T;
@@ -23,8 +18,10 @@ void searchBytitre(char name[]) {
 
 }
 
+/*void searchById(int id);*/
+
 void searchOps() {
-    int choice;
+    int choice, id;
     char word[MAX];
 
     printf("1: recherche par titre\n");
@@ -39,7 +36,9 @@ void searchOps() {
             clearString(word);
             break;
         case 2:
-            printf("in Case 2\n");
+            printf("Entre la tache identifiant: ");
+            scanf("%d", &id);
+            // searchById(int id);
             break;
         case 0:
             printf("Go to Menu\n");
