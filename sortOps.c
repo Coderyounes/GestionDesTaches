@@ -52,6 +52,7 @@ void sortOps(int choice)
     {
     case 1:
         sortByAlpha(fp);
+        fclose(fp);
         break;
     case 2:
         // sortByDeadline()
