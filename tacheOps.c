@@ -65,4 +65,31 @@ void modifieTache(char titre[], char new[]) {
 }
 
 
-// Delete function  same as modifdie
+// Update: Delete function should delete by ID 
+
+void deleteTache(char titre[]) {
+    char buffer[MAX];
+    Tache_t *T;
+    FILE *fp, *tfp;
+
+    T = malloc(sizeof(Tache_t));
+    CHECK_ALLOC(T);
+
+    fp = fileops(tfile, "r");
+    tfp = fileops("temp.txt", "a");
+
+    while(fgets(buffer, sizeof(buffer), fp) != NULL) {
+        sscanf(buffer, "%s %s %s %s", T->title, T->description, T->status, T->deadline);
+        if(strcmp(T->title, titre) != 0) {
+            fprintf(tfp, "%s %s %s %s\n", T->title, T->description, T->status, T->deadline);
+        } 
+    }
+
+    fclose(fp);
+    fclose(tfp);
+
+    remove(tfile);
+    rename("temp.txt", tfile);
+
+    free(T);
+}

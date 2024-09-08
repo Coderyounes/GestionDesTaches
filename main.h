@@ -33,8 +33,9 @@ typedef struct date {
 void ajouteTache();
 void afficherTaches();
 void modifieTache(char name[], char new[]);
+void deleteTache(char name[]);
 /*void ajoutesTaches();
-void deleteTache();*/
+*/
 
 // fileOperation
 FILE *fileops(char filename[], char mode[]);

@@ -26,7 +26,10 @@ int main() {
                 clearString(word);
                 break;
             case 4:
-                printf("This the Word String: %s\n", word);
+                printf("Entree le titre de tache a supprimer: ");
+                scanf("%s", word);
+                deleteTache(word);
+                clearString(word);
                 break;
             case 5:
                 break;
